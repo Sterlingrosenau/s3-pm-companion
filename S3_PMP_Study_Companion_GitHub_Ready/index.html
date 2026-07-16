@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#071a2f">
+  <meta name="description" content="S3 PMP Study Companion for the July 2026 PMP exam blueprint.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+  <title>S3 PMP Study Companion</title>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="app-header">
+    <div class="brand" aria-label="Sterling Strategy Solutions PMP Study Companion">
+      <div class="brand-mark">S3</div>
+      <div>
+        <strong>PMP Study Companion</strong>
+        <span>July 2026 exam blueprint</span>
+      </div>
+    </div>
+    <button class="icon-button" id="installButton" hidden type="button">Install app</button>
+  </header>
+
+  <main id="main">
+    <section class="view active" id="dashboardView" data-view="dashboard" aria-labelledby="dashboardTitle">
+      <div class="hero">
+        <div>
+          <p class="eyebrow">Your focused path to exam day</p>
+          <h1 id="dashboardTitle">Good <span id="daypart">day</span>, Sterling.</h1>
+          <p id="countdownCopy">Set your exam date to build your focused plan.</p>
+        </div>
+        <div class="readiness-ring" id="readinessRing" aria-label="Study readiness estimate 0 percent">
+          <div><strong id="readinessValue">0%</strong><span>readiness</span></div>
+        </div>
+      </div>
+
+      <div class="notice" role="note">
+        <strong>Built for the updated exam.</strong>
+        People 33% · Process 41% · Business Environment 26% · 40% predictive / 60% adaptive and hybrid.
+      </div>
+
+      <div class="stats-grid" aria-label="Study progress summary">
+        <article class="stat-card"><span>Questions answered</span><strong id="answeredStat">0 / 100</strong><small id="coverageStat">0% coverage</small></article>
+        <article class="stat-card"><span>Current accuracy</span><strong id="accuracyStat">—</strong><small id="recentAccuracyStat">No answers yet</small></article>
+        <article class="stat-card"><span>Study time</span><strong id="minutesStat">0 min</strong><small id="sessionStat">0 sessions logged</small></article>
+        <article class="stat-card"><span>Study streak</span><strong id="streakStat">0 days</strong><small>Answer or log time daily</small></article>
+      </div>
+
+      <div class="dashboard-grid">
+        <article class="panel today-panel">
+          <div class="panel-heading"><div><p class="eyebrow">Today's focus</p><h2 id="todayTitle">Start with a baseline</h2></div><span class="pill" id="todayMinutes">35 min</span></div>
+          <p id="todayDescription">Complete a mixed diagnostic set to identify your starting point.</p>
+          <div class="button-row">
+            <button class="primary-button" id="startTodayButton" type="button">Start today’s set</button>
+            <button class="secondary-button" id="completeTodayButton" type="button">Mark complete</button>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-heading"><div><p class="eyebrow">Domain pulse</p><h2>Where to focus</h2></div></div>
+          <div id="domainPulse" class="domain-pulse"></div>
+        </article>
+      </div>
+
+      <article class="panel recommendation-panel">
+        <div><p class="eyebrow">Next best action</p><h2 id="recommendationTitle">Take a 10-question diagnostic</h2><p id="recommendationCopy">A mixed set gives the tracker enough information to tailor your review.</p></div>
+        <button class="primary-button" id="recommendationButton" type="button">Begin diagnostic</button>
+      </article>
+    </section>
+
+    <section class="view" id="planView" data-view="plan" aria-labelledby="planTitle" hidden>
+      <div class="page-heading">
+        <div><p class="eyebrow">Adaptive study plan</p><h1 id="planTitle">Your route to exam day</h1><p>Change the date or session length and the plan recalculates automatically.</p></div>
+      </div>
+      <article class="panel settings-panel">
+        <label>Exam date<input type="date" id="examDateInput"></label>
+        <label>Weekday session<select id="weekdayMinutesInput"><option value="25">25 minutes</option><option value="35" selected>35 minutes</option><option value="45">45 minutes</option><option value="60">60 minutes</option></select></label>
+        <label>Long session<select id="longMinutesInput"><option value="60">60 minutes</option><option value="75" selected>75 minutes</option><option value="90">90 minutes</option><option value="120">120 minutes</option></select></label>
+      </article>
+      <div class="plan-summary" id="planSummary"></div>
+      <div id="scheduleList" class="schedule-list"></div>
+    </section>
+
+    <section class="view" id="practiceView" data-view="practice" aria-labelledby="practiceTitle" hidden>
+      <div class="page-heading practice-heading">
+        <div><p class="eyebrow">Challenging scenario practice</p><h1 id="practiceTitle">Question bank</h1><p>100 original questions with explanations and exam-minded decision traps.</p></div>
+        <button class="secondary-button" id="resetQuizButton" type="button">New set</button>
+      </div>
+
+      <article class="panel quiz-builder" id="quizBuilder">
+        <div class="builder-grid">
+          <label>Question set<select id="questionFilter"><option value="unanswered">Unanswered first</option><option value="missed">Missed questions</option><option value="flagged">Flagged questions</option><option value="all">All questions</option></select></label>
+          <label>Domain<select id="domainFilter"><option value="all">All domains</option><option value="People">People</option><option value="Process">Process</option><option value="Business Environment">Business Environment</option></select></label>
+          <label>Approach<select id="approachFilter"><option value="all">All approaches</option><option value="Predictive">Predictive</option><option value="Agile">Adaptive / Agile</option><option value="Hybrid">Hybrid</option></select></label>
+          <label>Set size<select id="quizSize"><option value="10">10 questions</option><option value="25">25 questions</option><option value="50">50 questions</option><option value="100">Full bank</option></select></label>
+        </div>
+        <button class="primary-button" id="buildQuizButton" type="button">Build practice set</button>
+      </article>
+
+      <article class="question-card" id="questionCard" hidden>
+        <div class="question-meta"><div><span class="pill" id="questionDomain"></span><span class="pill muted" id="questionApproach"></span><span class="pill challenge">Hard</span></div><button class="flag-button" id="flagButton" type="button" aria-pressed="false">☆ Flag</button></div>
+        <div class="quiz-progress"><div id="quizProgressBar"></div></div>
+        <p class="question-counter" id="questionCounter"></p>
+        <h2 id="questionText"></h2>
+        <form id="answerForm"><fieldset id="choiceList"><legend class="sr-only">Choose the best answer</legend></fieldset><button class="primary-button" id="submitAnswerButton" type="submit">Submit answer</button></form>
+        <div class="explanation" id="explanationPanel" hidden aria-live="polite">
+          <div class="result-banner" id="resultBanner"></div>
+          <h3>Why this is the best answer</h3><p id="explanationText"></p>
+          <div class="exam-trap"><strong>Exam lens</strong><p id="examLensText"></p></div>
+          <button class="primary-button" id="nextQuestionButton" type="button">Next question</button>
+        </div>
+      </article>
+
+      <article class="panel quiz-results" id="quizResults" hidden>
+        <p class="eyebrow">Set complete</p><h2 id="quizScoreTitle"></h2><p id="quizScoreCopy"></p><div id="quizDomainResults" class="domain-pulse"></div>
+        <div class="button-row"><button class="primary-button" id="reviewMissedButton" type="button">Review missed</button><button class="secondary-button" id="anotherSetButton" type="button">Build another set</button></div>
+      </article>
+    </section>
+
+    <section class="view" id="progressView" data-view="progress" aria-labelledby="progressTitle" hidden>
+      <div class="page-heading"><div><p class="eyebrow">Evidence-based review</p><h1 id="progressTitle">Progress tracker</h1><p>Your results stay in this browser unless you export them.</p></div><button class="secondary-button" id="exportButton" type="button">Export progress</button></div>
+      <div class="stats-grid"><article class="stat-card"><span>Readiness estimate</span><strong id="progressReadiness">0%</strong><small>Not a PMI passing score</small></article><article class="stat-card"><span>Questions mastered</span><strong id="masteredStat">0</strong><small>Correct on latest attempt</small></article><article class="stat-card"><span>Needs review</span><strong id="needsReviewStat">0</strong><small>Incorrect on latest attempt</small></article><article class="stat-card"><span>Plan complete</span><strong id="planCompleteStat">0%</strong><small id="planSessionsStat">0 sessions</small></article></div>
+      <div class="dashboard-grid">
+        <article class="panel"><p class="eyebrow">Accuracy by domain</p><h2>Blueprint coverage</h2><div id="domainProgress" class="domain-pulse"></div></article>
+        <article class="panel"><p class="eyebrow">Accuracy by approach</p><h2>Ways of working</h2><div id="approachProgress" class="domain-pulse"></div></article>
+      </div>
+      <article class="panel log-panel"><div><p class="eyebrow">Study log</p><h2>Record a session</h2></div><form id="studyLogForm" class="log-form"><label>Minutes<input type="number" id="logMinutes" min="5" max="240" value="35" required></label><label>Focus<select id="logFocus"><option>Mixed review</option><option>People</option><option>Process</option><option>Business Environment</option><option>Full mock exam</option><option>Formula review</option></select></label><label>Note<input type="text" id="logNote" maxlength="100" placeholder="Optional takeaway"></label><button class="primary-button" type="submit">Log session</button></form><div id="studyLogList" class="study-log-list"></div></article>
+      <article class="panel data-panel"><p><strong>Readiness estimate:</strong> 60% recent accuracy + 25% question-bank coverage + 15% scheduled-session completion. It is a study indicator, not a prediction of PMI’s scaled exam result.</p><button class="text-button danger" id="clearDataButton" type="button">Clear all progress</button></article>
+    </section>
+
+    <section class="view" id="referenceView" data-view="reference" aria-labelledby="referenceTitle" hidden>
+      <div class="page-heading"><div><p class="eyebrow">Fast reference</p><h1 id="referenceTitle">Exam-day essentials</h1><p>High-value reminders for judgment, formulas, and the updated blueprint.</p></div></div>
+      <div class="reference-grid">
+        <article class="panel"><h2>Decision sequence</h2><ol><li>Assess before acting.</li><li>Collaborate with the people closest to the work.</li><li>Use the agreed process and governance.</li><li>Protect value, ethics, safety, and compliance.</li><li>Escalate only when authority or thresholds require it.</li></ol></article>
+        <article class="panel"><h2>EVM formulas</h2><dl class="formula-list"><div><dt>CPI</dt><dd>EV ÷ AC</dd></div><div><dt>SPI</dt><dd>EV ÷ PV</dd></div><div><dt>CV</dt><dd>EV − AC</dd></div><div><dt>SV</dt><dd>EV − PV</dd></div><div><dt>EAC</dt><dd>BAC ÷ CPI</dd></div><div><dt>TCPI</dt><dd>(BAC − EV) ÷ (BAC − AC)</dd></div></dl></article>
+        <article class="panel"><h2>July 2026 blueprint</h2><ul><li>People: 33%</li><li>Process: 41%</li><li>Business Environment: 26%</li><li>40% predictive</li><li>60% adaptive/agile and hybrid</li><li>180 questions in 240 minutes</li></ul></article>
+        <article class="panel"><h2>New emphasis</h2><ul><li>Outcomes, value, and business impact</li><li>AI used with governance and human judgment</li><li>Sustainability integrated into decisions</li><li>Stakeholder engagement and strategic alignment</li><li>Scenario, case, graphic, and practicum-style items</li></ul></article>
+      </div>
+      <article class="panel sources-panel"><h2>Official sources</h2><p>This independent study tool uses original practice questions and is not affiliated with or endorsed by PMI.</p><ul><li><a href="https://www.pmi.org/-/media/pmi/documents/public/pdf/certifications/new-pmp-examination-content-outline-2026.pdf" target="_blank" rel="noreferrer">PMI PMP Examination Content Outline — July 2026</a></li><li><a href="https://www.pmi.org/certifications/project-management-pmp/new-exam" target="_blank" rel="noreferrer">PMI: What’s new in the updated PMP exam</a></li><li><a href="https://www.pmi.org/certifications/project-management-pmp" target="_blank" rel="noreferrer">PMI PMP certification and exam information</a></li></ul></article>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Primary navigation">
+    <button class="nav-button active" data-target="dashboard" type="button"><span aria-hidden="true">⌂</span>Home</button>
+    <button class="nav-button" data-target="plan" type="button"><span aria-hidden="true">▦</span>Plan</button>
+    <button class="nav-button" data-target="practice" type="button"><span aria-hidden="true">✓</span>Practice</button>
+    <button class="nav-button" data-target="progress" type="button"><span aria-hidden="true">↗</span>Progress</button>
+    <button class="nav-button" data-target="reference" type="button"><span aria-hidden="true">≡</span>Review</button>
+  </nav>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="data/questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
