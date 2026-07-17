@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="116" fill="#071a2f"/>
+  <path d="M82 118h348v276H82z" fill="#0f2e4f"/>
+  <path d="M116 154h280v204H116z" fill="#fff" opacity=".08"/>
+  <text x="256" y="296" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="178" fill="#fff">S3</text>
+  <rect x="116" y="334" width="280" height="18" rx="9" fill="#e5b84b"/>
+</svg>

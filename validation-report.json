@@ -1,0 +1,41 @@
+{
+  "model": "S3 PMP Study Companion v4 — 800 Item Model",
+  "validated_on": "2026-07-16",
+  "validation_scope": "Automated structural, blueprint, answer-key, format, and explanation checks; not PMI psychometric calibration",
+  "items": 800,
+  "unique_ids": 800,
+  "unique_combined_prompts": 800,
+  "archetypes": 100,
+  "variants_per_archetype": 8,
+  "domains": {
+    "People": 264,
+    "Process": 328,
+    "Business Environment": 208
+  },
+  "approaches": {
+    "Predictive": 320,
+    "Adaptive_Agile": 240,
+    "Hybrid": 240
+  },
+  "formats": {
+    "Single response": 400,
+    "Multiple response": 100,
+    "Case study": 100,
+    "Graphic-based": 100,
+    "Sequence / drag-style": 100
+  },
+  "single_key_balance": {
+    "A": 150,
+    "B": 150,
+    "C": 150,
+    "D": 150
+  },
+  "checks": [
+    "Every item has a unique ID and unique combined stimulus-plus-prompt",
+    "Domain and approach counts match the July 2026 PMP blueprint",
+    "Every single-response, case-study, and graphic-based key is in range",
+    "Every multiple-response item has exactly two distinct valid keys",
+    "Every sequence item has a complete one-through-four ordering",
+    "Every item has a task, hard difficulty label, explanation, and exam lens"
+  ]
+}
